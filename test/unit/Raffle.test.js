@@ -39,17 +39,8 @@ const {
           })
 
           describe("enterRaffle", () => {
-              it("reverts when you don't pay enough part 1", async () => {
+              it("reverts when you don't pay enough", async () => {
                   await expect(raffle.enterRaffle()).to.be.revertedWith(
-                      "Raffle__EntranceFeeNotEnough"
-                  )
-              })
-
-              it("reverts when you don't pay enough part 2", async () => {
-                  await expect(
-                      raffle.enterRaffle()
-                  ).to.be.revertedWithCustomError(
-                      raffle,
                       "Raffle__EntranceFeeNotEnough"
                   )
               })

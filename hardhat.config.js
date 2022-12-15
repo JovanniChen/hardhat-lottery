@@ -14,16 +14,23 @@ const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
 
 module.exports = {
-    defaultNetwork: "ganache",
+    defaultNetwork: "hardhat",
     solidity: {
         compilers: [{ version: "0.8.8" }, { version: "0.6.6" }],
     },
     networks: {
+        hardhat: {
+            chainId: 31337,
+        },
+        localhost: {
+            chainId: 31337,
+        },
         ganache: {
             url: GANACHE_RPC_URL,
             accounts: [GANACHE_PRIVATE_KEY],
             chainId: 1337,
             blockConfirmations: 1,
+            allowUnlimitedContractSize: true,
         },
         goerli: {
             url: GOERLI_RPC_URL,

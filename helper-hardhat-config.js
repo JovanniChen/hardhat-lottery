@@ -1,9 +1,10 @@
 const { ethers } = require("hardhat")
 
 const networkConfig = {
-    default: {
-        name: "ganache",
-    },
+    // default: {
+    //     name: "ganache",
+    //     keepersUpdateInterval: "30",
+    // },
     5: {
         name: "goerli",
         subscriptionId: "0",
@@ -22,9 +23,18 @@ const networkConfig = {
         keepersUpdateInterval: "30",
         callbackGasLimit: "500000",
     },
+    31337: {
+        name: "localhost",
+        subscriptionId: "588",
+        gasLane:
+            "0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc", // 30 gwei
+        keepersUpdateInterval: "30",
+        raffleEntranceFee: ethers.utils.parseEther("0.01"), // 0.01 ETH
+        callbackGasLimit: "500000", // 500,000 gas
+    },
 }
 
-const developmentChains = ["ganache"]
+const developmentChains = ["hardhat", "localhost", "ganache"]
 const VERIFICATION_BLOCK_CONFIRMATIONS = 6
 
 module.exports = {
